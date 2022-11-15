@@ -6,7 +6,7 @@ const {
 const router = express.Router();
 
 
-router.get('/',geTradoors);
+//router.get('/',geTradoors);
 router.get('/:collectionName',getCollectionNfts);
 
 

@@ -22,7 +22,7 @@ app.use(logger);
 app.use(express.json());
 
 //to enable cors
-app.use(cors());
+app.use(cors(corsOptions));
 
 //telling express where to find static files like a css file or other resources like an image that we would use on the  server
 app.use('/', express.static(path.join(__dirname, 'public')))
@@ -70,8 +70,6 @@ mongoose.connect(process.env.MONG_URI)
     });
 
 
-// Export the Express API
-module.exports = app;
 
     
     
