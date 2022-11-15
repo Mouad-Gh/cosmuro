@@ -70,4 +70,8 @@ mongoose.connect(process.env.MONG_URI)
     });
 
     
+// Export the Express API
+module.exports = app;
+
+    
     
