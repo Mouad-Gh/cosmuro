@@ -69,7 +69,8 @@ mongoose.connect(process.env.MONG_URI)
         console.log(err);
     });
 
-
+// Export the Express API
+module.exports = app;
 
     
     
