@@ -15,7 +15,7 @@ const RaritySection = () => {
     //get the collections from the backend
     useEffect(() => {
       const fetchCollections = async ()=> {
-        const response = await fetch(`http://localhost:4000/api/collectionsInfo?page=${pageNumber}`);
+        const response = await fetch(`https://cosmuro-api.onrender.com/api/collectionsInfo?page=${pageNumber}`);
         const {total, collections} = await response.json();
 
         if(response.ok){

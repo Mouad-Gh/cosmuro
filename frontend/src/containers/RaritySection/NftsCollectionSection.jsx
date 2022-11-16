@@ -23,7 +23,7 @@ const NftSection = (props) => {
     //useeffect that will fetch the collection and store it on a local state
     useEffect(() => {
         const fetchCollection = async ()=> {
-          const response = await fetch(`http://localhost:4000/api/nfts/${db_name}`);
+          const response = await fetch(`https://cosmuro-api.onrender.com/api/nfts/${db_name}`);
           const json = await response.json();
   
           if(response.ok){
@@ -42,7 +42,7 @@ const NftSection = (props) => {
             setNftObj(nfts.find(nft =>{
                 return nft.Rank === rank;
             }));
-            console.log(nftObj.len);
+            //console.log(nftObj.length);
         }
     }
 

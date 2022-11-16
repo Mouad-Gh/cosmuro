@@ -11,7 +11,7 @@ export const useDiscordCnx = () => {
 
     const authorizeDiscord = async (name, discordId, discordImage, wallet)=>{
 
-        const response = await fetch('http://localhost:4000/api/users',{
+        const response = await fetch('https://cosmuro-api.onrender.com/api/users',{
             method :'POST',
             headers: { "Content-Type": "application/json"},
             body : JSON.stringify({name, discordId, discordImage, wallet})

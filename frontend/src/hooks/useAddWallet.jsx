@@ -13,7 +13,7 @@ export const useAddWallet =  ()=>{
         setError(null);
         setIsloading(true);
 
-        const response = await fetch('http://localhost:4000/api/wallets',{
+        const response = await fetch('https://cosmuro-api.onrender.com/api/wallets',{
             method :'POST',
             headers: { "Content-Type": "application/json", 'Access-Control-Allow-Origin': '*' },
             body : JSON.stringify({type, adress})
