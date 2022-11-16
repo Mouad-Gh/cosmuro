@@ -19,7 +19,7 @@ const Navbar = () => {
         <div className="relative flex ">
 
           <div className="flex min-w-fit">
-            <Link className="pt-2 md:pt-0 " to="/"> <img src="/src/assets/ApeLogo.png" alt="logo" className="h-10  object-cover"   /></Link>
+            <Link className="pt-2 md:pt-0 " to="/"> <img src="/assets/ApeLogo.png" alt="logo" className="h-10  object-cover"   /></Link>
           </div>
 
           <ul className={`absolute top-[70px] left-0 right-0 md:inset-0 md:relative w-full h-[calc(100vh-70px)] md:h-auto z-50 bg-noir md:bg-transparent self-center flex flex-col md:flex-row justify-center items-center uppercase     gap-y-5 gap-x-3 ${menuOpen? "translate-x-0 " : "-translate-x-full bg-transparent"}  md:translate-x-0 ease-in-out duration-300`} >

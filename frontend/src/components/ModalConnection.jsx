@@ -45,19 +45,19 @@ const ModalConnection = ({open, close}) => {
                 </div>
                 <div className="pt-12  flex flex-col justify-center items-center gap-y-4">
                     <button className="inline-flex gap-x-2 px-3 py-3 w-60 rounded bg-[#212529] shadow-[0_4px_12px_0_rgb(30,28,41,0.99)] " onClick={terraClick} >
-                        <img src="/src/assets/terra_station.png" className="h-6" alt="tera station logo" />
+                        <img src="/assets/terra_station.png" className="h-6" alt="tera station logo" />
                         <span className="font-azonix ">Terra</span>
                     </button>
                     <button className="inline-flex gap-x-2 px-3 py-3 w-60 rounded bg-[#212529] hover:shadow-[0_4px_12px_0_#dce2ef] hover:-translate-y-0.5 transition-all" onClick={stargazeClick} >
-                        <img src="/src/assets/stargaze.png" className="h-5" alt="stargaze logo" />
+                        <img src="/assets/stargaze.png" className="h-5" alt="stargaze logo" />
                         <span className="font-azonix ">Stargaze</span>
                     </button>
                     <button className="inline-flex gap-x-2 px-3 py-3 w-60 rounded bg-[#212529] hover:shadow-[0_0_12px_0_rgb(30,28,41,0.99)]" onClick={junoClick}>
-                        <img src="/src/assets/juno.png" className="h-5" alt="juno logo" />
+                        <img src="/assets/juno.png" className="h-5" alt="juno logo" />
                         <span className="font-azonix ">Juno</span>
                     </button>
                     <button className="inline-flex gap-x-2 px-3 py-3 w-60 rounded bg-[#212529] hover:shadow-[0_0_12px_0_rgb(30,28,41,0.99)]" onClick={petraClick}>
-                        <img src="/src/assets/petra.jpg" className="h-5" alt="tera station logo" />
+                        <img src="/assets/petra.jpg" className="h-5" alt="tera station logo" />
                         <span className="font-azonix ">Petra</span>
                     </button>
                     <button className="inline-flex gap-x-2 px-3 py-3 w-60 rounded bg-[#212529] hover:shadow-[0_0_12px_0_rgb(30,28,41,0.99)]" onClick={martianClick}>
