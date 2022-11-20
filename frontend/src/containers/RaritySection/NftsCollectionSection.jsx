@@ -23,7 +23,7 @@ const NftSection = (props) => {
     //useeffect that will fetch the collection and store it on a local state
     useEffect(() => {
         const fetchCollection = async ()=> {
-          const response = await fetch(`38.242.246.253:4000/api/nfts/${db_name}`);
+          const response = await fetch(`http://38.242.246.253:4000/api/nfts/${db_name}`);
           const json = await response.json();
   
           if(response.ok){

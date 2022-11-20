@@ -1,5 +1,5 @@
 {
-  "proxy": "https://cosmuro-api.onrender.com",
+  "proxy": "http://38.242.246.253:4000",
   "name": "frontend",
   "private": true,
   "version": "0.0.0",
