@@ -23,7 +23,7 @@ const NftSection = (props) => {
     //useeffect that will fetch the collection and store it on a local state
     useEffect(() => {
         const fetchCollection = async ()=> {
-          const response = await fetch(`https://cosmuro-api.onrender.com/api/nfts/${db_name}`);
+          const response = await fetch(`38.242.246.253:4000/api/nfts/${db_name}`);
           const json = await response.json();
   
           if(response.ok){
@@ -64,7 +64,7 @@ const NftSection = (props) => {
                             <h4 className="font-medium text-2xl capitalize">{nftObj? collectionInfo.name+"#"+nftObj.ID :  "nft name"}</h4>
                             <span className="bg-violet rounded-xl whitespace-nowrap h-8 p-2 flex items-center font-medium">{nftObj? "Rank "+nftObj.Rank+" of "+collectionInfo.totalItem : "nft rank"}</span>
                         </div>
-                        <h5 className="text-violet font-medium text-xl font-jura">{nftObj?.Network || "collection name"}</h5>
+                        <h5 className="text-violet font-medium text-xl font-jura">{nftObj?.Network || "Chain name"}</h5>
                     </div>
                     
 

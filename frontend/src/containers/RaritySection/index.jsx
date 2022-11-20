@@ -15,7 +15,7 @@ const RaritySection = () => {
     //get the collections from the backend
     useEffect(() => {
       const fetchCollections = async ()=> {
-        const response = await fetch(`https://cosmuro-api.onrender.com/api/collectionsInfo?page=${pageNumber}`);
+        const response = await fetch(`38.242.246.253:4000/api/collectionsInfo?page=${pageNumber}`);
         const {total, collections} = await response.json();
 
         if(response.ok){
@@ -64,7 +64,7 @@ const RaritySection = () => {
 
     return ( 
         <section className=" m-10  ">
-          <div className=" flex justify-between mx-10" aria-label="search fields ">
+          <div className=" flex flex-col md:flex-row gap-y-2 justify-between mx-10" aria-label="search fields ">
             <div  aria-label="search by name" className="max-w-md w-full flex items-center rounded-xl border-2 border-[#f4f6f9] focus:shadow focus:outline-none focus-visible:border-violet h-12  p-1 cursor-text ">
               <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">
                 <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />
@@ -79,7 +79,7 @@ const RaritySection = () => {
               </button>)}
             </div>
 
-            <div className="relative" aria-label="select blockchain filter">
+            <div className="relative ml-auto" aria-label="select blockchain filter">
               <button className={`flex justify-between items-center relative p-3 min-w-[150px] rounded-lg border-[1px] ${show && 'border-violet'} `} onClick={()=>setShow(!show)}>
                 <span className="">All</span>
                 <svg className="absolute top-[calc(50% - 0.5em)] right-1" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="20" height="10" viewBox="0 0 256 256" > <path fill="none" d="M0 0H256V256H0z"></path> <path d="M215.4 92.9A8 8 0 00208 88H48a8 8 0 00-7.4 4.9 8.4 8.4 0 001.7 8.8l80 80a8.2 8.2 0 0011.4 0l80-80a8.4 8.4 0 001.7-8.8z"></path></svg>

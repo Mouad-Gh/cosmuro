@@ -2,7 +2,8 @@ import { useWallet, WalletStatus } from "@terra-money/wallet-provider";
 import { useAddWallet  } from "./useAddWallet";
 
 export const useTerra =  ()=>{
-    const { addWallet } = useAddWallet();
+    const { addWallet,isLoading } = useAddWallet();
+    console.log('terra',isLoading)
     const {
         status,
         network,
@@ -17,7 +18,7 @@ export const useTerra =  ()=>{
         connect(availableConnectTypes[0]);      
         if(status === WalletStatus.WALLET_CONNECTED){
             //call the connect hook
-            
+           
             console.log('before',wallets[0]["terraAddress"])
              addWallet("terra", wallets[0]["terraAddress"]);
             
