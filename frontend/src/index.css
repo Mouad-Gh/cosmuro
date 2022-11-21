@@ -31,6 +31,9 @@
         background-size 0.3s,
         background-position 0s 0.3s; /*change after the size immediately*/
   }
+  .selected-dis{
+    background-image: linear-gradient(#c4c4c4, #c4c4c4);
+  }
 
 .selected:hover {
     color : #6C63FF;
@@ -40,6 +43,9 @@
     background-position: 100% 78%; /*OR bottom right*/
     background-size: 100% 3px;
   }  
+.selected-dis:hover {
+    color : #c4c4c4;
+  }
 }
 
 @layer utilities {

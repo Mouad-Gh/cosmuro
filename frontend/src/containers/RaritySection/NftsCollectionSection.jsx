@@ -23,7 +23,7 @@ const NftSection = (props) => {
     //useeffect that will fetch the collection and store it on a local state
     useEffect(() => {
         const fetchCollection = async ()=> {
-          const response = await fetch(`http://38.242.246.253:4000/api/nfts/${db_name}`);
+          const response = await fetch(`https://apello.xyz:4000/api/nfts/${db_name}`);
           const json = await response.json();
   
           if(response.ok){
@@ -37,15 +37,22 @@ const NftSection = (props) => {
     }, []);
     const [nftObj, setNftObj] = useState(null);
     const goClick = ()=>{
-        if(rank){
+        
+        if(number){
             
             setNftObj(nfts.find(nft =>{
-                return nft.Rank === rank;
+                return nft.ID === number;
             }));
             //console.log(nftObj.length);
         }
     }
-
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+          // 👇 Get input value
+          goClick();
+        }
+      };
+        //<img alt="nft" src={nftObj?.Pic || collectionInfo.imageUrl} className="w-full h-full rounded-3xl outline-none border-4 border-violet object-cover object-center " />
     return ( 
         <section className="mx-auto mb-8 py-8 px-6 selection:bg-violet selection:text-noir " aria-label="the collection nfts">
             
@@ -53,14 +60,14 @@ const NftSection = (props) => {
                 
                 <div className="w-full flex flex-col">
                     <div className="flex flex-col md:flex-row gap-4 justify-center items-center mb-4 text-base font-azonix" aria-label="search fields">
-                        <div className="flex gap-x-1" aria-label="search by number">
-                            <input type="text" placeholder="Search by Number" className="outline-none border-violet border-2 rounded-lg p-3 text-noir" onChange={(e)=>setRank(e.target.value)}/>
+                        <div className="flex gap-x-1 w-4/5" aria-label="search by number">
+                            <input type="text" placeholder="Search by Number" className="outline-none border-violet border-2 rounded-lg p-3 text-noir w-full" onKeyDown={handleKeyDown} onChange={(e)=>setNumber(e.target.value)}/>
                             <button className="bg-violet rounded-lg p-3 uppercase" onClick={goClick}>Go</button>
                         </div>
                         
                     </div>
                     <div className="bg-noir rounded-lg p-4 flex flex-col self-center w-4/5 outline-none border-2 border-violet">
-                        <div className="flex justify-between">
+                        <div className="flex justify-between flex-wrap">
                             <h4 className="font-medium text-2xl capitalize">{nftObj? collectionInfo.name+"#"+nftObj.ID :  "nft name"}</h4>
                             <span className="bg-violet rounded-xl whitespace-nowrap h-8 p-2 flex items-center font-medium">{nftObj? "Rank "+nftObj.Rank+" of "+collectionInfo.totalItem : "nft rank"}</span>
                         </div>

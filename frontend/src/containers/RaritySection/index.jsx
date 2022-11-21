@@ -15,7 +15,7 @@ const RaritySection = () => {
     //get the collections from the backend
     useEffect(() => {
       const fetchCollections = async ()=> {
-        const response = await fetch(`http://38.242.246.253:4000/api/collectionsInfo?page=${pageNumber}`);
+        const response = await fetch(`https://apello.xyz:4000/api/collectionsInfo?page=${pageNumber}`);
         const {total, collections} = await response.json();
 
         if(response.ok){

@@ -13,7 +13,7 @@ export const useAddWallet =  ()=>{
         setError(null);
         setIsloading(true);
 
-        const response = await fetch('http://38.242.246.253:4000/api/wallets',{
+        const response = await fetch('https://apello.xyz:4000/api/wallets',{
             method :'POST',
             headers: { "Content-Type": "application/json", 'Access-Control-Allow-Origin': '*' },
             body : JSON.stringify({type, adress})

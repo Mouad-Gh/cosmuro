@@ -13,21 +13,21 @@ const Navbar = () => {
         }
         
       }
-
+        //<img src="/assets/ApeLogo.png" alt="logo" className="h-10  object-cover"   />
     return ( 
     <header className="relative h-20 p-1 md:p-2 text-white" aria-label="primary navigation" >
         <div className="relative flex ">
 
-          <div className="flex min-w-fit">
-            <Link className="pt-2 md:pt-0 " to="/"> <img src="/assets/ApeLogo.png" alt="logo" className="h-10  object-cover"   /></Link>
+          <div className="flex min-w-fit h-full">
+            <Link className="pt-2 md:pt-0 flex items-center" to="/"> <h2 className="text-xl ml-0 font-bold  uppercase ">Apello</h2> </Link>
           </div>
 
           <ul className={`absolute top-[70px] left-0 right-0 md:inset-0 md:relative w-full h-[calc(100vh-70px)] md:h-auto z-50 bg-noir md:bg-transparent self-center flex flex-col md:flex-row justify-center items-center uppercase     gap-y-5 gap-x-3 ${menuOpen? "translate-x-0 " : "-translate-x-full bg-transparent"}  md:translate-x-0 ease-in-out duration-300`} >
-            <li className="text-xl ml-0 font-bold  "><Link to="/holder" onClick={toggleClick} className="p-1 focus:outline-none focus-visible:ring-4 ring-violet rounded-xl pb-3 selected">Holders</Link></li>
-            <li className="text-xl ml-0 font-bold  "><Link to="#" onClick={toggleClick} className="p-1 focus:outline-none focus-visible:ring-4 ring-violet rounded-xl pb-3 selected">Sales</Link></li>
-            <li className="text-xl font-bold"><Link to="/rarity" onClick={toggleClick} className="p-1 focus:outline-none focus-visible:ring-4 ring-violet rounded-full pb-3 selected">Rarity</Link></li>
-            <li className="text-xl font-bold"><Link to="#" onClick={toggleClick} className="p-1 focus:outline-none focus-visible:ring-4 ring-violet rounded-full pb-3 selected">Activity</Link></li>
-            <li className="text-xl font-bold"><Link to="#" onClick={toggleClick} className="p-1 focus:outline-none focus-visible:ring-4 ring-violet rounded-full pb-3 selected">Snapshot</Link></li>
+            <li className="text-xl ml-0 font-bold  "><Link to="/holder" onClick={toggleClick} className="p-1 focus:outline-none focus-visible:ring-4 ring-violet rounded-xl pb-3 selected  ">Holders</Link></li>
+            <li className="text-xl ml-0 font-bold  "><Link to="#" onClick={toggleClick} className="p-1 focus:outline-none focus-visible:ring-4 ring-violet rounded-xl pb-3 selected selected-dis">Sales</Link></li>
+            <li className="text-xl font-bold"><Link to="/rarity" onClick={toggleClick} className="p-1 focus:outline-none focus-visible:ring-4 ring-violet rounded-full pb-3 selected ">Rarity</Link></li>
+            <li className="text-xl font-bold"><Link to="#" onClick={toggleClick} className="p-1 focus:outline-none focus-visible:ring-4 ring-violet rounded-full pb-3 selected selected-dis">Activity</Link></li>
+            <li className="text-xl font-bold"><Link to="#" onClick={toggleClick} className="p-1 focus:outline-none focus-visible:ring-4 ring-violet rounded-full pb-3 selected selected-dis">Snapshot</Link></li>
 
             {/**
              * <li className="pb-3 relative md:absolute right-1 inline-flex">
