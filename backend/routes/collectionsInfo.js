@@ -1,11 +1,13 @@
 const express = require('express');
 const {
-    getCollectionsInfo
+    getCollectionsInfo,
+    getSeachedCollectionsInfo
 } = require('../controllers/collectionController')
 const router = express.Router();
 
 
 router.get('/',getCollectionsInfo);
+router.get('/search/',getSeachedCollectionsInfo);
 
 
 

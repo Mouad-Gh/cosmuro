@@ -1,4 +1,3 @@
-const { default: mongoose } = require('mongoose');
 const User = require('../models/User');
 
 
@@ -55,13 +54,27 @@ const getUsers = async(req, res)=>{
     
 }
 //get single user
-const getUser = async(req, res)=>{
+/*const getUser = async(req, res)=>{
     const { id } = req.params;
     try {
         if(!mongoose.Types.ObjectId.isValid(id)){
             return res.status(404).json({error : "no such workout"})
         }
         const user = await User.findById(id);
+        if(!user){
+            return res.status(404).json({error: 'no such user!'});
+        }
+        res.status(200).json(user);
+    } catch (error) {
+        res.status(400).json({err : error.message});
+    }
+    
+}*/
+const getUser = async(req, res)=>{
+    const { id } = req.params;
+    try {
+        
+        const user = await User.findOne({discordId: id});
         if(!user){
             return res.status(404).json({error: 'no such user!'});
         }

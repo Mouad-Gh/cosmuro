@@ -1,10 +1,6 @@
-const mongoose = require('mongoose');
-
-const Schema = mongoose.Schema;
+const CollectionInfo = require('../models/CollectionInfo');
 
 
-//create a model for the collections that's already exist
-const CollectionInfo = mongoose.model("CollectionInfo", new Schema({}), "collections_info");
 
 //get all collections
 const getCollectionsInfo = async (req,res) => {
@@ -26,6 +22,31 @@ const getCollectionsInfo = async (req,res) => {
     }
 }
 
+//add a name parameter to search by
+const getSeachedCollectionsInfo = async (req,res) => {
+    const page = parseInt(req.query.page || "0");
+    const search = req.query.name || "";
+    const PAGE_SIZE = 20;
+    
+    
+    try {
+        //get the number of documents
+        const total = await CollectionInfo.countDocuments({name: {$regex:search, $options: 'i'}});
+        //get documents
+        //text is an index {$text:{$search: name}}
+        let collections = await CollectionInfo.find({name: {$regex:search, $options: 'i'}})
+                                                .limit(PAGE_SIZE)
+                                                .skip(PAGE_SIZE * page);
+        res.status(200).json({
+            hasMore: (total / PAGE_SIZE )-(page+1) >0 ,
+            collections
+        });
+    } catch (error) {
+        res.status(400).json({err: error.message});
+    }
+}
+
+
 
 
 
@@ -35,5 +56,6 @@ const getCollectionsInfo = async (req,res) => {
 
 
 module.exports = {
-    getCollectionsInfo
+    getCollectionsInfo,
+    getSeachedCollectionsInfo
 }

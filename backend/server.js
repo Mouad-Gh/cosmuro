@@ -10,6 +10,11 @@ const userRoutes = require('./routes/users');
 const walletRoutes = require('./routes/wallets');
 const NftsRoutes = require('./routes/nfts');
 const collectionsRoutes = require('./routes/collectionsInfo');
+const fs = require('fs');
+const https = require("https");
+
+const key = fs.readFileSync('./privkey.pem');
+const cert = fs.readFileSync('./fullchain.pem');
 
 const app = express();
 
@@ -54,11 +59,13 @@ app.all('*', (req, res) => {
 //
 app.use(errorHandler);
 
+const server = https.createServer({key: key, cert: cert}, app);
+
 //connect to db
 mongoose.connect(process.env.MONG_URI)
     .then(  (Connection)=>{
         //listning for requests
-        app.listen(process.env.PORT,()=>{
+        server.listen(process.env.PORT,()=>{
             console.log('connected to db & listening on port ',process.env.PORT);
 
             /*Tradoor = mongoose.model("Tradoor", new Schema({}), "tradooors");
