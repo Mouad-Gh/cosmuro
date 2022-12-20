@@ -5,7 +5,10 @@ const {
     addUserOrWallet,
     addWallet,
     deleteWallet
-} = require('../controllers/userController')
+} = require('../controllers/userController');
+
+const requireAuth = require('../middleware/requireAuth');
+
 const router = express.Router();
 
 
@@ -16,7 +19,7 @@ router.get('/', getUsers);
 router.get('/:id',getUser);
 
 //create a user
-router.post('/', addUserOrWallet);
+router.post('/', requireAuth, addUserOrWallet);
 
 //create a wallet
 router.post('/:userId/wallet', addWallet);

@@ -2,6 +2,7 @@ const Wallet = require('../models/walletModel');
 const jwt = require('jsonwebtoken');
 
 
+
 //check if the wallet alreasy exist & if it's not create it then
 //if the wallet adress already exist then it should send us the image if there is one
 
@@ -42,6 +43,29 @@ const addNotExistedWallet = async (req,res)=>{
     }
     
 }
+//check jwt authentication token & wallet 
+const verifyWallet = async (req,res) => {
+    const adress = req.params.wallet;
+    //console.log(adress,req.query.adress,req.params)
+    try {
+        //check if the wallet already exists
+        const exists = await Wallet.findOne({adress});
+        if(!exists){
+            //return res.status(401).json({err: 'Wallet is not existed'});
+            throw Error('Wallet is not existed');
+        }
+        //compare the wallet we got from the authorization token (requireAuth middleware) with the wallet from the request user 
+        if(!exists._id.equals(req.wallet._id) ){
+            throw Error(`wallet Or authentication error `);
+        }
+
+        res.status(200).json({wallet: exists, exist: true });
+
+
+    } catch (error) {
+        res.status(400).json({err : error.message});
+    }
+}
 //get all wallets
 const getWallets = async(req, res)=>{
     try {
@@ -55,5 +79,6 @@ const getWallets = async(req, res)=>{
 
 module.exports = {
     addNotExistedWallet,
-    getWallets
+    getWallets,
+    verifyWallet
 }
