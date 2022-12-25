@@ -46,7 +46,10 @@ const getSeachedCollectionsInfo = async (req,res) => {
     }
 }
 
-
+//get collection info by symbol 
+const getCollectionBySymbol = async(symbol) => {
+    return await CollectionInfo.findOne({symbol})
+}
 
 
 
@@ -56,6 +59,7 @@ const getSeachedCollectionsInfo = async (req,res) => {
 
 
 module.exports = {
+    getCollectionBySymbol,
     getCollectionsInfo,
     getSeachedCollectionsInfo
 }

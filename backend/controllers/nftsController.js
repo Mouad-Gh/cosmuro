@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-
+const { getCollectionBySymbol } = require('./collectionController');
 const Schema = mongoose.Schema;
 
 
@@ -21,13 +21,19 @@ const getCollectionNfts = async (req, res) => {
     const {collectionName} = req.params ;
     
     try {
-        const ModelCol = mongoose.model("ModelCol", new Schema({}),collectionName);
-        console.log(ModelCol);
-        const data = await ModelCol.find({});
-        res.status(200).json(data);
-        //delete the model after working with, so that it won't get an error in the next execution "Cannot overwrite `ModelCol` model once compiled"
-        delete mongoose.connection.models['ModelCol'];
+        const collectInfo = await getCollectionBySymbol(collectionName);
+        
+        if(collectInfo){
+            const ModelCol = mongoose.model("ModelCol", new Schema({}),collectionName);
+            
+            const data = await ModelCol.find({});
+            //delete the model after working with, so that it won't get an error in the next execution "Cannot overwrite `ModelCol` model once compiled"
+            delete mongoose.connection.models['ModelCol'];
+            return res.status(200).json({data, collectInfo});
+        }
+        res.status(404).json({err: "collection not found :(!"});
     } catch (error) {
+        delete mongoose.connection.models['ModelCol'];
         res.status(400).json({err: error.message})
     }
     
