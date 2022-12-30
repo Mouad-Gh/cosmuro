@@ -13,17 +13,21 @@ const SaleSchema = new Schema({
         type: String,
         required: true
     },
+    transactionID:{
+        type: String,
+        required: true
+    },
     nftID:{
         type: String,
         required: true
     },
     nftImage: String,
-    amount:{
-        type: String,
-        required: true
+    CollectionName:{
+        type: String
     },
-    seller:{
-        type: String,
+    collectionImage: String,
+    amount:{
+        type: Number,
         required: true
     },
     buyer:{
