@@ -13,7 +13,18 @@ const addSale = async (req, res)=>{
     }
 }
 
+const getSales = async (req, res) => {
+    try {
+        const sales = await Sale.find({}).sort({createdAt: -1}).limit(100);
+        res.status(200).json(sales);
+    } catch (error) {
+        res.status(400).json({err : error.message});
+    }
+}
+
+
 
 module.exports = {
-    addSale
+    addSale,
+    getSales
 }

@@ -1,11 +1,15 @@
 const express = require('express');
 const {
-    addSale
+    addSale,
+    getSales
 } = require('../controllers/saleController')
 const router = express.Router();
 
 //create a sale
 router.post('/', addSale);
+
+
+router.get('/', getSales);
 
 
 

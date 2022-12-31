@@ -28,7 +28,7 @@ const logger = (req, res, next) => {
     // this log every request that comes in so maybe we'll want to put some conditionals in there 
     //that would say only log it if it's not coming from our own url or only specific requests methods cuz this'll get full very fast
     logEvents(`${req.method}\t${req.url}\t${req.headers.origin}`, 'reqLog.log')
-    console.log(`${req.method} ${req.path}`)
+    //console.log(`${req.method} ${req.path}`)
     next()
 }
 
