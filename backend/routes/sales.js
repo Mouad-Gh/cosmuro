@@ -1,7 +1,9 @@
 const express = require('express');
 const {
     addSale,
-    getSales
+    getSales,
+    topSales,
+    getSeachedSales
 } = require('../controllers/saleController')
 const router = express.Router();
 
@@ -10,6 +12,12 @@ router.post('/', addSale);
 
 
 router.get('/', getSales);
+
+
+router.get('/top5', topSales);
+
+
+router.get('/search', getSeachedSales);
 
 
 

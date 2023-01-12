@@ -39,7 +39,7 @@ const getSeachedCollectionsInfo = async (req,res) => {
                                                 .skip(PAGE_SIZE * page);
         res.status(200).json({
             hasMore: (total / PAGE_SIZE )-(page+1) >0 ,
-            collections
+            data: collections
         });
     } catch (error) {
         res.status(400).json({err: error.message});
