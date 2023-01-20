@@ -26,12 +26,13 @@ const getSales = async (req, res) => {
 const topSales = async (req, res) => {
     //by createdAt || updatedAt
     const day = parseInt(req.query.day);
+    const chain = req.query.chain || "juno";
     
     console.log(day,new Date(new Date() - day * 60 * 60 * 24 * 1000))
     //{ $match: { createdAt: /^2023-01/ } },
     try {
         const sales = await Sale.aggregate([
-            { $match: { createdAt: { $gte: new Date(new Date() - day * 60 * 60 * 24 * 1000)} } },
+            { $match: { createdAt: { $gte: new Date(new Date() - day * 60 * 60 * 24 * 1000)}, chain } },
             { $group: {
              _id: '$CollectionName',
              count: { $sum: 1 }, 
@@ -63,6 +64,7 @@ const getSeachedSales = async (req,res) => {
     const page = parseInt(req.query.page || "0");
     const search = req.query.name || "";
     const PAGE_SIZE = 20;
+    const chain = req.query.chain || "juno";
     
     
     try {
@@ -71,13 +73,13 @@ const getSeachedSales = async (req,res) => {
         const total = await Sale.countDocuments({name: {$regex:search, $options: 'i'}});
 
         //get documents
-        let sales = await Sale.find({CollectionName: {$regex:search, $options: 'i'}})
+        let sales = await Sale.find({CollectionName: {$regex:search, $options: 'i'},chain})
                                                 .sort({createdAt: -1})
                                                 .limit(PAGE_SIZE)
                                                 .skip(PAGE_SIZE * page);
 
         //console.log(sales)
-        console.log(page)
+        //console.log(page)
         
         res.status(200).json({
             hasMore: (total / PAGE_SIZE )-(page+1) >0 ,

@@ -6,7 +6,7 @@ const corsOptions = {
     origin: (origin, callback) => {
 
         //!origin means anything that doesn't provide an origin like postman or desktop applications  || !origin
-        if (allowedOrigins.indexOf(origin) !== -1  ) {
+        if (allowedOrigins.indexOf(origin) !== -1   ) {
             //callback(an error object, the allowed boolean)
             callback(null, true)
         } else {

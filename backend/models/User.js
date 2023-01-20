@@ -29,8 +29,7 @@ const UserSchema = new Schema({
         unique : true
     },
     discordImage : {
-        type : String,
-        required: true
+        type : String
     },
     wallets: [
         WalletSchema
