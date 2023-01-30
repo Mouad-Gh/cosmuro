@@ -13,7 +13,7 @@ const WalletSchema = new Schema({
     adress:{
         type: String,
         required: true,
-        unique : true
+        //unique : true
     }
 })
 //enforce the unique index for the list
