@@ -27,7 +27,7 @@ const getCalendars = async(req, res)=>{
             ...( upComing ? { mintDate: { $gte: new Date()} } : { mintDate: { $lte: new Date()} } ), 
             ...(chain!=="all" && { chain })
         }
-        const calendars = await CalendarNft.find(filterObj).populate("wallet").sort({createdAt: -1}).limit(PAGE_SIZE);
+        const calendars = await CalendarNft.find(filterObj).populate("wallet").sort({ ...( upComing ? {mintDate: 1} : {mintDate: -1}) }).limit(PAGE_SIZE);
         res.status(200).json(calendars);
     } catch (error) {
         res.status(400).json({err : error.message});
