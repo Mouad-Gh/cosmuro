@@ -12,6 +12,8 @@ const NftsRoutes = require('./routes/nfts');
 const collectionsRoutes = require('./routes/collectionsInfo');
 const salesRoutes = require('./routes/sales');
 const calendarRoutes = require('./routes/calendarsNft');
+const bidsRoutes = require('./routes/bids');
+const newSpotsRoutes = require('./routes/newSpots');
 const fs = require('fs');
 const https = require("https");
 
@@ -45,6 +47,8 @@ app.use('/api/nfts', NftsRoutes);
 app.use('/api/collectionsInfo', collectionsRoutes);
 app.use('/api/sales', salesRoutes);
 app.use('/api/calendar', calendarRoutes);
+app.use('/api/bids', bidsRoutes);
+app.use('/api/newspots', newSpotsRoutes);
 
 //if there is a request that doesn't routed properly and didn't get stopped by any of the expected routes
 //(asterisk)* means all so basically everything that reaches it to app.all, a catch all thatgoes at the end
